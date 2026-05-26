@@ -39,15 +39,19 @@ title: Community Hub (Resources)
         color: var(--steam-text-light);
     }
 
-    /* Guides Grid */
-    .guides-grid {
-        display: grid;
+    /* Guides Grid & Tab Panes */
+    .tab-pane {
+        display: none; /* Hide all by default */
         grid-template-columns: 1fr;
         gap: 1rem;
     }
 
+    .tab-pane.active {
+        display: grid; /* Show only active pane */
+    }
+
     @media (min-width: 768px) {
-        .guides-grid {
+        .tab-pane {
             grid-template-columns: repeat(2, 1fr);
         }
     }
@@ -185,75 +189,143 @@ title: Community Hub (Resources)
 </div>
 
 <div class="steam-tabs">
-    <div class="steam-tab active">All Guides</div>
-    <div class="steam-tab">Writing Tools</div>
-    <div class="steam-tab">Campus Support</div>
-    <div class="steam-tab">Workshop Items</div>
+    <div class="steam-tab active" onclick="switchTab('pane-all', this)">All Guides</div>
+    <div class="steam-tab" onclick="switchTab('pane-writing', this)">Writing Tools</div>
+    <div class="steam-tab" onclick="switchTab('pane-support', this)">Campus Support</div>
+    <div class="steam-tab" onclick="switchTab('pane-workshop', this)">Workshop Items</div>
 </div>
 
 <div class="store-grid">
     
-    <div class="guides-grid">
+    <div class="guides-container">
         
-        <a href="https://plato.stanford.edu/" target="_blank" class="guide-card">
-            <div class="guide-img-placeholder">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </div>
-            <div class="guide-content">
-                <div class="guide-title">Stanford Encyclopedia of Philosophy</div>
-                <div class="guide-author">
-                    <span style="display:inline-block; width:12px; height:12px; background:#66c0f4; border-radius:50%;"></span>
-                    Created by Official SEP
+        <div id="pane-all" class="tab-pane active">
+            <a href="https://plato.stanford.edu/" target="_blank" class="guide-card">
+                <div class="guide-img-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 </div>
-                <div class="guide-desc">The absolute gold standard for philosophical research. Peer-reviewed, frequently updated, and completely free to use for your essays.</div>
-                <div class="btn-blue">Access Database</div>
-            </div>
-        </a>
+                <div class="guide-content">
+                    <div class="guide-title">Stanford Encyclopedia of Philosophy</div>
+                    <div class="guide-author">
+                        <span style="display:inline-block; width:12px; height:12px; background:#66c0f4; border-radius:50%;"></span>
+                        Created by Official SEP
+                    </div>
+                    <div class="guide-desc">The absolute gold standard for philosophical research. Peer-reviewed, frequently updated, and completely free to use for your essays.</div>
+                    <div class="btn-blue">Access Database</div>
+                </div>
+            </a>
 
-        <a href="https://intuitions.games" target="_blank" class="guide-card">
-            <div class="guide-img-placeholder">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            </div>
-            <div class="guide-content">
-                <div class="guide-title">Interactive Philosophy Sandbox</div>
-                <div class="guide-author">
-                    <span style="display:inline-block; width:12px; height:12px; background:#79a01b; border-radius:50%;"></span>
-                    Created by Course Instructor
+            <a href="https://intuitions.games" target="_blank" class="guide-card">
+                <div class="guide-img-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                 </div>
-                <div class="guide-desc">Access the digital sandbox at intuitions.games for playable thought experiments and interactive educational modules to test out theories.</div>
-                <div class="btn-blue">Launch Sandbox</div>
-            </div>
-        </a>
+                <div class="guide-content">
+                    <div class="guide-title">Interactive Philosophy Sandbox</div>
+                    <div class="guide-author">
+                        <span style="display:inline-block; width:12px; height:12px; background:#79a01b; border-radius:50%;"></span>
+                        Created by Course Instructor
+                    </div>
+                    <div class="guide-desc">Access the digital sandbox at intuitions.games for playable thought experiments and interactive educational modules to test out theories.</div>
+                    <div class="btn-blue">Launch Sandbox</div>
+                </div>
+            </a>
+            
+            <a href="#" class="guide-card">
+                <div class="guide-img-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path></svg>
+                </div>
+                <div class="guide-content">
+                    <div class="guide-title">A Guide to Philosophical Writing</div>
+                    <div class="guide-author">
+                        <span style="display:inline-block; width:12px; height:12px; background:#a26bdb; border-radius:50%;"></span>
+                        Created by Philosophy Dept.
+                    </div>
+                    <div class="guide-desc">Writing for philosophy requires a completely different approach than a standard literature or history essay. Learn how to structure arguments.</div>
+                    <div class="btn-blue">Read Guide</div>
+                </div>
+            </a>
+            
+            <a href="#" class="guide-card">
+                <div class="guide-img-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <div class="guide-content">
+                    <div class="guide-title">Student Support & Accommodations</div>
+                    <div class="guide-author">
+                        <span style="display:inline-block; width:12px; height:12px; background:#eb6b6b; border-radius:50%;"></span>
+                        Created by Campus Admin
+                    </div>
+                    <div class="guide-desc">Links to the writing center, free academic tutoring, disability accommodations, and mental health counseling services available on campus.</div>
+                    <div class="btn-blue">View Services</div>
+                </div>
+            </a>
+        </div>
 
-        <a href="#" class="guide-card">
-            <div class="guide-img-placeholder">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path></svg>
-            </div>
-            <div class="guide-content">
-                <div class="guide-title">A Guide to Philosophical Writing</div>
-                <div class="guide-author">
-                    <span style="display:inline-block; width:12px; height:12px; background:#a26bdb; border-radius:50%;"></span>
-                    Created by Philosophy Dept.
+        <div id="pane-writing" class="tab-pane">
+            <a href="#" class="guide-card">
+                <div class="guide-img-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path></svg>
                 </div>
-                <div class="guide-desc">Writing for philosophy requires a completely different approach than a standard literature or history essay. Learn how to structure arguments.</div>
-                <div class="btn-blue">Read Guide</div>
-            </div>
-        </a>
+                <div class="guide-content">
+                    <div class="guide-title">A Guide to Philosophical Writing</div>
+                    <div class="guide-author">
+                        <span style="display:inline-block; width:12px; height:12px; background:#a26bdb; border-radius:50%;"></span>
+                        Created by Philosophy Dept.
+                    </div>
+                    <div class="guide-desc">Writing for philosophy requires a completely different approach than a standard literature or history essay. Learn how to structure arguments.</div>
+                    <div class="btn-blue">Read Guide</div>
+                </div>
+            </a>
+            
+            <a href="https://owl.purdue.edu/" target="_blank" class="guide-card">
+                <div class="guide-img-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                </div>
+                <div class="guide-content">
+                    <div class="guide-title">Purdue OWL Citation Guide</div>
+                    <div class="guide-author">
+                        <span style="display:inline-block; width:12px; height:12px; background:#e6c86a; border-radius:50%;"></span>
+                        Created by Purdue Univ.
+                    </div>
+                    <div class="guide-desc">The standard guide for formatting your citations. Please refer to this for all end-of-term essays.</div>
+                    <div class="btn-blue">Access OWL</div>
+                </div>
+            </a>
+        </div>
 
-        <a href="#" class="guide-card">
-            <div class="guide-img-placeholder">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </div>
-            <div class="guide-content">
-                <div class="guide-title">Student Support & Accommodations</div>
-                <div class="guide-author">
-                    <span style="display:inline-block; width:12px; height:12px; background:#eb6b6b; border-radius:50%;"></span>
-                    Created by Campus Admin
+        <div id="pane-support" class="tab-pane">
+            <a href="#" class="guide-card">
+                <div class="guide-img-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                 </div>
-                <div class="guide-desc">Links to the writing center, free academic tutoring, disability accommodations, and mental health counseling services available on campus.</div>
-                <div class="btn-blue">View Services</div>
-            </div>
-        </a>
+                <div class="guide-content">
+                    <div class="guide-title">Student Support & Accommodations</div>
+                    <div class="guide-author">
+                        <span style="display:inline-block; width:12px; height:12px; background:#eb6b6b; border-radius:50%;"></span>
+                        Created by Campus Admin
+                    </div>
+                    <div class="guide-desc">Links to the writing center, free academic tutoring, disability accommodations, and mental health counseling services available on campus.</div>
+                    <div class="btn-blue">View Services</div>
+                </div>
+            </a>
+        </div>
+
+        <div id="pane-workshop" class="tab-pane">
+            <a href="https://intuitions.games" target="_blank" class="guide-card">
+                <div class="guide-img-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <div class="guide-content">
+                    <div class="guide-title">Interactive Philosophy Sandbox</div>
+                    <div class="guide-author">
+                        <span style="display:inline-block; width:12px; height:12px; background:#79a01b; border-radius:50%;"></span>
+                        Created by Course Instructor
+                    </div>
+                    <div class="guide-desc">Access the digital sandbox at intuitions.games for playable thought experiments and interactive educational modules to test out theories.</div>
+                    <div class="btn-blue">Launch Sandbox</div>
+                </div>
+            </a>
+        </div>
 
     </div>
 
@@ -297,3 +369,24 @@ title: Community Hub (Resources)
     </div>
 
 </div>
+
+<script>
+    function switchTab(paneId, clickedTab) {
+        // 1. Remove 'active' class from all tabs
+        const tabs = document.querySelectorAll('.steam-tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+
+        // 2. Add 'active' class to the clicked tab
+        clickedTab.classList.add('active');
+
+        // 3. Hide all tab panes
+        const panes = document.querySelectorAll('.tab-pane');
+        panes.forEach(pane => pane.classList.remove('active'));
+
+        // 4. Show the specific pane we clicked on
+        const targetPane = document.getElementById(paneId);
+        if (targetPane) {
+            targetPane.classList.add('active');
+        }
+    }
+</script>
