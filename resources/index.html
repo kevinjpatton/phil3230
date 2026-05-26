@@ -1,31 +1,299 @@
 ---
-layout: 3230
-title: PHIL3230 - Home
+layout: default
+title: Community Hub (Resources)
 ---
-<h1>Resources</h1>
-<p>Below you can find guides for creating a thesis, structuring a paper, and some musings of mine.</p>
 
-<h2>What is Philosophy?</h2>
-<ul class="standard-list">
-  <li>Why study philosophy?<a href="https://kevinjpatton.com/teaching/commonresources/Handout - Why Philosophy.pdf" target="_blank">(pdf)</a></li>
-  <li>How to do philosophical analysis? <a href="https://kevinjpatton.com/teaching/commonresources/Handout - How to do Philosophical Analysis.pdf" target="_blank">(pdf)</a></li>
-  <li>What are intuitions? <a href="https://kevinjpatton.com/teaching/commonresources/Handout - The Role and Nature of Intuitions.pdf" target="_blank">(pdf)</a></li>
-</ul>
+<style>
+    /* --- Community Hub Specific Styles --- */
+    .hub-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 1rem;
+    }
 
-<h2>Reading Philosophy</h2>
-<ul class="standard-list">
-  <li>Using indicator words to understand philosophy <a href="https://kevinjpatton.com/teaching/commonresources/Handout - Indicator Words.pdf" target="_blank">(pdf)</a></li>
-</ul>
+    /* Fake Steam Tabs */
+    .steam-tabs {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--steam-blue-dark);
+    }
 
-<h2>Writing Guides</h2>
-<ul class="standard-list">
-  <li>Creating a thesis <a href="https://kevinjpatton.com/teaching/commonresources/Handout - Creating Your Thesis.pdf" target="_blank">(pdf)</a></li>
-  <li>Two ways to write a philosophy paper <a href="https://kevinjpatton.com/teaching/commonresources/Handout - Writing a Philosophy Paper.pdf" target="_blank">(pdf)</a></li>
-  <li>A template for paper writing <a href="https://kevinjpatton.com/teaching/commonresources/Handout - Argumentative Paper Template.pdf" target="_blank">(pdf)</a></li>
-  <li>My prefered rubric <a href="https://kevinjpatton.com/teaching/commonresources/Handout - Grading Rubric.pdf" target="_blank">(pdf)</a></li>
-</ul>
+    .steam-tab {
+        background: rgba(0, 0, 0, 0.2);
+        color: var(--steam-blue);
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        border-radius: 4px 4px 0 0;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
 
-<h2>Other Online Resources</h2>
-<ul class="standard-list">
-  <li>A list of helpful philosophy websites <a href="https://kevinjpatton.com/teaching/commonresources/Handout - Online Resources.pdf" target="_blank">(pdf)</a></li>
-</ul>
+    .steam-tab:hover {
+        background: rgba(102, 192, 244, 0.2);
+    }
+
+    .steam-tab.active {
+        background: var(--steam-blue-dark);
+        color: var(--steam-text-light);
+    }
+
+    /* Guides Grid */
+    .guides-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .guides-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .guide-card {
+        background: var(--steam-panel);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .guide-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        border-color: rgba(102, 192, 244, 0.3);
+    }
+
+    .guide-img-placeholder {
+        height: 120px;
+        background: linear-gradient(135deg, #2a475e 0%, #1b2838 100%);
+        border-radius: 4px 4px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(0,0,0,0.5);
+    }
+
+    .guide-content {
+        padding: 1.25rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .guide-title {
+        font-size: 1.1rem;
+        color: var(--steam-text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .guide-desc {
+        font-size: 0.85rem;
+        color: #8f98a0;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+    }
+
+    .guide-author {
+        font-size: 0.75rem;
+        color: #556772;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 1rem;
+    }
+
+    /* Steam Action Button */
+    .btn-blue {
+        background: rgba(102, 192, 244, 0.2);
+        color: var(--steam-blue);
+        text-align: center;
+        padding: 8px;
+        border-radius: 2px;
+        font-size: 0.85rem;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-blue:hover {
+        background: var(--steam-blue);
+        color: #fff;
+    }
+
+    /* Sidebar Styles */
+    .sidebar-widget {
+        background: var(--steam-panel);
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+    }
+
+    .widget-title {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--steam-text-light);
+        border-bottom: 1px solid var(--steam-blue-dark);
+        padding-bottom: 5px;
+        margin-bottom: 1rem;
+    }
+
+    .curator-list {
+        list-style: none;
+    }
+
+    .curator-item {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+    }
+
+    .curator-thumb {
+        width: 40px;
+        height: 40px;
+        background: #2a475e;
+        border-radius: 2px;
+        flex-shrink: 0;
+    }
+
+    .curator-info {
+        font-size: 0.8rem;
+    }
+
+    .curator-game {
+        color: var(--steam-blue);
+        font-weight: 600;
+        display: block;
+    }
+
+    .curator-topic {
+        color: #8f98a0;
+    }
+</style>
+
+<div class="breadcrumb">
+    <a href="#">All Courses</a> > 
+    <a href="#">Philosophy Department</a> > 
+    <a href="#">PHIL 3230</a> > Community Hub
+</div>
+
+<div class="hub-header">
+    <h1 class="page-title">Community Hub (Resources)</h1>
+</div>
+
+<div class="steam-tabs">
+    <div class="steam-tab active">All Guides</div>
+    <div class="steam-tab">Writing Tools</div>
+    <div class="steam-tab">Campus Support</div>
+    <div class="steam-tab">Workshop Items</div>
+</div>
+
+<div class="store-grid">
+    
+    <div class="guides-grid">
+        
+        <a href="https://plato.stanford.edu/" target="_blank" class="guide-card">
+            <div class="guide-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <div class="guide-content">
+                <div class="guide-title">Stanford Encyclopedia of Philosophy</div>
+                <div class="guide-author">
+                    <span style="display:inline-block; width:12px; height:12px; background:#66c0f4; border-radius:50%;"></span>
+                    Created by Official SEP
+                </div>
+                <div class="guide-desc">The absolute gold standard for philosophical research. Peer-reviewed, frequently updated, and completely free to use for your essays.</div>
+                <div class="btn-blue">Access Database</div>
+            </div>
+        </a>
+
+        <a href="https://intuitions.games" target="_blank" class="guide-card">
+            <div class="guide-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <div class="guide-content">
+                <div class="guide-title">Interactive Philosophy Sandbox</div>
+                <div class="guide-author">
+                    <span style="display:inline-block; width:12px; height:12px; background:#79a01b; border-radius:50%;"></span>
+                    Created by Course Instructor
+                </div>
+                <div class="guide-desc">Access the digital sandbox at intuitions.games for playable thought experiments and interactive educational modules to test out theories.</div>
+                <div class="btn-blue">Launch Sandbox</div>
+            </div>
+        </a>
+
+        <a href="#" class="guide-card">
+            <div class="guide-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path></svg>
+            </div>
+            <div class="guide-content">
+                <div class="guide-title">A Guide to Philosophical Writing</div>
+                <div class="guide-author">
+                    <span style="display:inline-block; width:12px; height:12px; background:#a26bdb; border-radius:50%;"></span>
+                    Created by Philosophy Dept.
+                </div>
+                <div class="guide-desc">Writing for philosophy requires a completely different approach than a standard literature or history essay. Learn how to structure arguments.</div>
+                <div class="btn-blue">Read Guide</div>
+            </div>
+        </a>
+
+        <a href="#" class="guide-card">
+            <div class="guide-img-placeholder">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--steam-blue)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div class="guide-content">
+                <div class="guide-title">Student Support & Accommodations</div>
+                <div class="guide-author">
+                    <span style="display:inline-block; width:12px; height:12px; background:#eb6b6b; border-radius:50%;"></span>
+                    Created by Campus Admin
+                </div>
+                <div class="guide-desc">Links to the writing center, free academic tutoring, disability accommodations, and mental health counseling services available on campus.</div>
+                <div class="btn-blue">View Services</div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="sidebar-column">
+        
+        <div class="sidebar-widget">
+            <h3 class="widget-title">Curator Recommends</h3>
+            <p style="font-size: 0.85rem; color: #8f98a0; margin-bottom: 1rem;">Games frequently referenced in course lectures and essays.</p>
+            
+            <ul class="curator-list">
+                <li class="curator-item">
+                    <div class="curator-thumb"></div>
+                    <div class="curator-info">
+                        <span class="curator-game">Helldivers Series</span>
+                        <span class="curator-topic">Satire & Managed Democracy</span>
+                    </div>
+                </li>
+                <li class="curator-item">
+                    <div class="curator-thumb"></div>
+                    <div class="curator-info">
+                        <span class="curator-game">The Stanley Parable</span>
+                        <span class="curator-topic">Illusion of Free Will</span>
+                    </div>
+                </li>
+                <li class="curator-item">
+                    <div class="curator-thumb"></div>
+                    <div class="curator-info">
+                        <span class="curator-game">BioShock</span>
+                        <span class="curator-topic">Objectivism & Choice</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar-widget">
+            <h3 class="widget-title">Need Help?</h3>
+            <p style="font-size: 0.85rem; color: #8f98a0; margin-bottom: 1rem;">If you are having trouble accessing the required readings or the interactive modules, contact support.</p>
+            <a href="#" class="btn-blue" style="display: block;">Email Professor</a>
+        </div>
+
+    </div>
+
+</div>
