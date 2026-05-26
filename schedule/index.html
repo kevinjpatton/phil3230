@@ -1,0 +1,318 @@
+---
+layout: default
+title: Library (Schedule)
+---
+
+<style>
+    /* --- Library / Schedule Specific Styles --- */
+    .library-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 1px solid var(--steam-blue-dark);
+        padding-bottom: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .library-item {
+        background: var(--steam-panel);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+        transition: background 0.2s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .library-item:hover {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Left Side: Week & Date Tracker */
+    .li-top-bar {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem 1.5rem;
+        border-radius: 4px 4px 0 0;
+        border-left: 3px solid #4c5a65;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        font-size: 0.85rem;
+        color: #8f98a0;
+    }
+
+    .li-top-bar.active {
+        border-left: 3px solid var(--steam-blue);
+    }
+
+    .week-badge {
+        font-weight: 700;
+        color: var(--steam-text-light);
+        letter-spacing: 1px;
+    }
+
+    /* Right Side: Content */
+    .li-content {
+        padding: 1.5rem;
+    }
+
+    .li-title {
+        font-size: 1.4rem;
+        color: var(--steam-text-light);
+        margin-bottom: 1rem;
+    }
+
+    .li-readings {
+        margin-bottom: 1.5rem;
+    }
+
+    .li-readings-title {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #556772;
+        margin-bottom: 0.5rem;
+    }
+
+    .reading-list {
+        list-style: none;
+    }
+
+    .reading-list li {
+        color: var(--steam-text-main);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        font-size: 0.95rem;
+    }
+
+    .reading-list li::before {
+        content: '▸';
+        color: var(--steam-blue);
+    }
+
+    /* --- Action Buttons (Steam Styled) --- */
+    .action-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Generic Steam Button */
+    .btn-steam {
+        background: rgba(103, 193, 245, 0.1);
+        color: var(--steam-blue);
+        border: 1px solid var(--steam-blue-dark);
+        padding: 6px 12px;
+        border-radius: 2px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s;
+    }
+    .btn-steam:hover {
+        background: var(--steam-blue);
+        color: #fff;
+    }
+
+    /* Warning/Required Button (Notes Due) */
+    .btn-steam-warn {
+        background: rgba(220, 80, 80, 0.1);
+        color: #eb6b6b;
+        border: 1px solid rgba(220, 80, 80, 0.3);
+    }
+    .btn-steam-warn:hover {
+        background: rgba(220, 80, 80, 0.2);
+        color: #ff8585;
+    }
+
+    /* Notification Tag (Response Paper) */
+    .tag-achievement {
+        background: rgba(212, 175, 55, 0.1);
+        color: #e6c86a;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        padding: 6px 12px;
+        border-radius: 2px;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Exam Review Button */
+    .btn-steam-special {
+        background: rgba(162, 107, 219, 0.1);
+        color: #bfa1e6;
+        border: 1px solid rgba(162, 107, 219, 0.3);
+    }
+    .btn-steam-special:hover {
+        background: rgba(162, 107, 219, 0.3);
+        color: #d1b8f0;
+    }
+
+    @media (min-width: 768px) {
+        .library-item {
+            flex-direction: row;
+        }
+        .li-top-bar {
+            flex-direction: column;
+            width: 150px;
+            border-radius: 4px 0 0 4px;
+            border-left: 4px solid #4c5a65;
+            border-bottom: none;
+            justify-content: center;
+            text-align: center;
+        }
+        .li-top-bar.active {
+            border-left: 4px solid var(--steam-blue);
+        }
+        .li-content {
+            flex-grow: 1;
+            border-left: 1px solid rgba(0,0,0,0.5);
+        }
+    }
+</style>
+
+<div class="breadcrumb">
+    <a href="#">All Courses</a> > 
+    <a href="#">Philosophy Department</a> > 
+    <a href="#">PHIL 3230</a> > Library
+</div>
+
+<div class="library-header">
+    <h1 class="page-title">Course Library (Schedule)</h1>
+    <div style="color: #8f98a0; font-size: 0.85rem;">4 Items / Sort by: <span style="color: var(--steam-text-light);">Release Date</span></div>
+</div>
+
+<div class="library-list">
+    
+    <div class="library-item">
+        <div class="li-top-bar">
+            <span class="week-badge">WEEK 01</span>
+            <span class="date-range">Aug 24 - 28</span>
+        </div>
+        <div class="li-content">
+            <h2 class="li-title">What is a Game? (Rules & Play)</h2>
+            
+            <div class="li-readings">
+                <div class="li-readings-title">Required Downloads:</div>
+                <ul class="reading-list">
+                    <li>Syllabus & Course Outline</li>
+                    <li>Bernard Suits, <em>The Grasshopper: Games, Life and Utopia</em> (Excerpts)</li>
+                    <li>Jesper Juul, <em>Half-Real: Video Games between Real Rules and Fictional Worlds</em> (Ch. 2)</li>
+                </ul>
+            </div>
+
+            <div class="action-row">
+                <div class="tag-achievement" style="color: #8f98a0; border-color: rgba(255,255,255,0.1); background: transparent;">
+                    No response paper due this week.
+                </div>
+                <a href="#" class="btn-steam btn-steam-warn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    ANNOTATED NOTES DUE
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="library-item">
+        <div class="li-top-bar active">
+            <span class="week-badge" style="color: var(--steam-blue);">WEEK 02</span>
+            <span class="date-range">Aug 31 - Sep 4</span>
+        </div>
+        <div class="li-content">
+            <h2 class="li-title">The Ethics of Virtual Actions</h2>
+            
+            <div class="li-readings">
+                <div class="li-readings-title">Required Downloads:</div>
+                <ul class="reading-list">
+                    <li>Miguel Sicart, <em>The Ethics of Computer Games</em> (Ch. 1)</li>
+                    <li>Marcus Schulzke, <em>Defending the Morality of Violent Video Games</em></li>
+                </ul>
+            </div>
+
+            <div class="action-row">
+                <a href="https://spotify.com" target="_blank" class="btn-steam">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                    Listen to Podcast
+                </a>
+                <div class="tag-achievement">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Response Paper 1 Due
+                </div>
+                <a href="#" class="btn-steam btn-steam-warn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    ANNOTATED NOTES DUE
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="library-item">
+        <div class="li-top-bar">
+            <span class="week-badge">WEEK 03</span>
+            <span class="date-range">Sep 7 - 11</span>
+        </div>
+        <div class="li-content">
+            <h2 class="li-title">Aesthetics, Art, and Interactivity</h2>
+            
+            <div class="li-readings">
+                <div class="li-readings-title">Required Downloads:</div>
+                <ul class="reading-list">
+                    <li>Grant Tavinor, <em>The Art of Videogames</em> (Excerpts)</li>
+                    <li>Aaron Smuts, <em>Are Video Games Art?</em></li>
+                </ul>
+            </div>
+
+            <div class="action-row">
+                <a href="#" target="_blank" class="btn-green" style="font-family: 'Inter', sans-serif; padding: 4px 12px;">
+                    <svg width="14" height="14" style="display:inline; margin-right:4px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    PLAY: Aesthetics Sandbox
+                </a>
+                <a href="#" class="btn-steam btn-steam-special">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Exam Review
+                </a>
+                <a href="#" class="btn-steam btn-steam-warn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    ANNOTATED NOTES DUE
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="library-item">
+        <div class="li-top-bar">
+            <span class="week-badge">WEEK 04</span>
+            <span class="date-range">Sep 14 - 18</span>
+        </div>
+        <div class="li-content">
+            <h2 class="li-title">Identity & The Virtual Avatar</h2>
+            
+            <div class="li-readings">
+                <div class="li-readings-title">Required Downloads:</div>
+                <ul class="reading-list">
+                    <li>C. Thi Nguyen, <em>Games: Agency As Art</em> (Excerpts)</li>
+                </ul>
+            </div>
+
+            <div class="action-row">
+                <a href="#" target="_blank" class="btn-green" style="font-family: 'Inter', sans-serif; padding: 4px 12px;">
+                    <svg width="14" height="14" style="display:inline; margin-right:4px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    PLAY: Avatar Simulator
+                </a>
+                <a href="#" class="btn-steam btn-steam-warn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    ANNOTATED NOTES DUE
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
