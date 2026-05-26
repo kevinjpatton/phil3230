@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | PHIL 3230</title>
+    
+    <!-- Link to our separate stylesheet -->
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+
+    <!-- Global Header -->
+    <header>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"></circle><line x1="12" y1="2" x2="12" y2="22"></line></svg>
+                PHIL 3230
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Store Page (Home)</a></li>
+                <li><a href="{{ '/schedule.html' | relative_url }}" class="{% if page.url == '/schedule.html' %}active{% endif %}">Library (Schedule)</a></li>
+                <li><a href="{{ '/resources.html' | relative_url }}" class="{% if page.url == '/resources.html' %}active{% endif %}">Community Hub (Resources)</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content injected here -->
+    <main>
+        {{ content }}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            © 2026 Dr. Kevin J. Patton. All rights reserved. <br>
+            All trademarks are property of their respective owners in the US and other countries.<br>
+            VAT included in all prices where applicable.
+        </div>
+    </footer>
+
+</body>
+</html>
