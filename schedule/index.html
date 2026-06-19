@@ -2,6 +2,181 @@
 layout: default
 title: Schedule
 ---
+<style>
+    /* --- Library / Schedule Specific Styles --- */
+    .library-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 1px solid var(--steam-blue-dark);
+        padding-bottom: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .library-item {
+        background: var(--steam-panel);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+        transition: background 0.2s;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .library-item:hover {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Left Side: Week & Date Tracker */
+    .li-top-bar {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem 1.5rem;
+        border-radius: 4px 4px 0 0;
+        border-left: 3px solid #4c5a65;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        font-size: 0.85rem;
+        color: #8f98a0;
+    }
+
+    .li-top-bar.active {
+        border-left: 3px solid var(--steam-blue);
+    }
+
+    .week-badge {
+        font-weight: 700;
+        color: var(--steam-text-light);
+        letter-spacing: 1px;
+    }
+
+    /* Right Side: Content */
+    .li-content {
+        padding: 1.5rem;
+    }
+
+    .li-title {
+        font-size: 1.4rem;
+        color: var(--steam-text-light);
+        margin-bottom: 1rem;
+    }
+
+    .li-readings {
+        margin-bottom: 1.5rem;
+    }
+
+    .li-readings-title {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #556772;
+        margin-bottom: 0.5rem;
+    }
+
+    .reading-list {
+        list-style: none;
+    }
+
+    .reading-list li {
+        color: var(--steam-text-main);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        font-size: 0.95rem;
+    }
+
+    .reading-list li::before {
+        content: '▸';
+        color: var(--steam-blue);
+    }
+
+    /* --- Action Buttons (Steam Styled) --- */
+    .action-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Generic Steam Button */
+    .btn-steam {
+        background: rgba(103, 193, 245, 0.1);
+        color: var(--steam-blue);
+        border: 1px solid var(--steam-blue-dark);
+        padding: 6px 12px;
+        border-radius: 2px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s;
+    }
+    .btn-steam:hover {
+        background: var(--steam-blue);
+        color: #fff;
+    }
+
+    /* Warning/Required Button (Notes Due) */
+    .btn-steam-warn {
+        background: rgba(220, 80, 80, 0.1);
+        color: #eb6b6b;
+        border: 1px solid rgba(220, 80, 80, 0.3);
+    }
+    .btn-steam-warn:hover {
+        background: rgba(220, 80, 80, 0.2);
+        color: #ff8585;
+    }
+
+    /* Notification Tag (Response Paper) */
+    .tag-achievement {
+        background: rgba(212, 175, 55, 0.1);
+        color: #e6c86a;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        padding: 6px 12px;
+        border-radius: 2px;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Exam Review Button */
+    .btn-steam-special {
+        background: rgba(162, 107, 219, 0.1);
+        color: #bfa1e6;
+        border: 1px solid rgba(162, 107, 219, 0.3);
+    }
+    .btn-steam-special:hover {
+        background: rgba(162, 107, 219, 0.3);
+        color: #d1b8f0;
+    }
+
+    @media (min-width: 768px) {
+        .library-item {
+            flex-direction: row;
+        }
+        .li-top-bar {
+            flex-direction: column;
+            width: 150px;
+            border-radius: 4px 0 0 4px;
+            border-left: 4px solid #4c5a65;
+            border-bottom: none;
+            justify-content: center;
+            text-align: center;
+        }
+        .li-top-bar.active {
+            border-left: 4px solid var(--steam-blue);
+        }
+        .li-content {
+            flex-grow: 1;
+            border-left: 1px solid rgba(0,0,0,0.5);
+        }
+    }
+</style>
 
 <div class="breadcrumb">
     <a href="#">All Courses</a> > 
